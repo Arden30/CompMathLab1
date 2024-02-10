@@ -1,2 +1,4 @@
-package arden.simple_iterations.model;public class Matrix {
+package arden.simple_iterations.model;
+
+public record Matrix(double[][] matrix, int size, double accuracy) {
 }

@@ -1,7 +1,11 @@
-package arden.iterations;
+package arden.simple_iterations;
+
+
+import arden.simple_iterations.algorithm.ProgramStarter;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ProgramStarter programStarter = new ProgramStarter();
+        programStarter.start();
     }
 }
