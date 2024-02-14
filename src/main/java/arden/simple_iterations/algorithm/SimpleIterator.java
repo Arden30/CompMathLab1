@@ -73,13 +73,18 @@ public class SimpleIterator {
 
     private boolean checkAndMakeDiagonalDomination() {
         int row = 0, prev = -1;
+        int strict = 0;
         while (row < size) {
             int tmp = row;
             OptionalInt maxIndex = IntStream.range(0, size)
                     .reduce((k, l) -> Math.abs(elements[tmp][k]) > Math.abs(elements[tmp][l]) ? k : l);
             if (maxIndex.isPresent()) {
                 int index = maxIndex.getAsInt();
-                if (index == prev) {
+                double sum = sumWithoutDiagonal(elements, row, index);
+                if (elements[row][index] > sum) {
+                    strict++;
+                }
+                if (index == prev || elements[row][index] < sum) {
                     return false;
                 } else if (index != row) {
                     permutation(elements, row, index);
@@ -92,9 +97,18 @@ public class SimpleIterator {
                 return false;
             }
         }
-        return true;
+        return strict != 0;
     }
 
+    private double sumWithoutDiagonal(double[][] elements, int row, int index) {
+        double sum = 0;
+        for (int i = 0; i < size; i++) {
+            if (i != index) {
+                sum += elements[row][i];
+            }
+        }
+        return sum;
+    }
     private void permutation(double[][] elements, int row, int index) {
         for (int i = 0; i < size + 1; i++) {
             double tmp = elements[row][i];
