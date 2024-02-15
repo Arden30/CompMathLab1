@@ -1,8 +1,8 @@
 package arden.simple_iterations.algorithm;
 
-import arden.simple_iterations.matrix_reader.ReadFromConsole;
-import arden.simple_iterations.matrix_reader.ReadFromFile;
-import arden.simple_iterations.matrix_reader.Readable;
+import arden.simple_iterations.data_input.ReadFromConsole;
+import arden.simple_iterations.data_input.ReadFromFile;
+import arden.simple_iterations.data_input.Readable;
 
 import java.util.Scanner;
 

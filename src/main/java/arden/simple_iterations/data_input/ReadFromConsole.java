@@ -1,4 +1,4 @@
-package arden.simple_iterations.matrix_reader;
+package arden.simple_iterations.data_input;
 
 import arden.simple_iterations.model.Matrix;
 import arden.simple_iterations.utils.MatrixReader;
@@ -25,9 +25,14 @@ public class ReadFromConsole implements Readable {
     }
 
     private double accuracyRead() {
-        System.out.println("Введите точность:");
+        System.out.println("Введите точность (не меньше чем 0.0001):");
         String str = scanner.next().replace(",", ".");
-        return Double.parseDouble(str);
+        double accuracy = Double.parseDouble(str);
+        if (accuracy <= 0) {
+            System.out.println("Точность вычислений должна быть больше 0, попробуйте ещё раз");
+            accuracyRead();
+        }
+        return accuracy;
     }
     private int sizeRead() {
         System.out.println("Введите размер матрицы (не больше 20):");

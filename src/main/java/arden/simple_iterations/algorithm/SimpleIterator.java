@@ -24,6 +24,7 @@ public class SimpleIterator {
             PrettyPrinter.printTableHeader(size);
 
             getDiagonalElements();
+
             double[] approximation = new double[size];
             for (int i = 0; i < size; i++) {
                 approximation[i] = elements[i][size];
@@ -81,10 +82,10 @@ public class SimpleIterator {
             if (maxIndex.isPresent()) {
                 int index = maxIndex.getAsInt();
                 double sum = sumWithoutDiagonal(elements, row, index);
-                if (elements[row][index] > sum) {
+                if (Math.abs(elements[row][index]) > sum) {
                     strict++;
                 }
-                if (index == prev || elements[row][index] < sum) {
+                if (index == prev || Math.abs(elements[row][index]) < sum) {
                     return false;
                 } else if (index != row) {
                     permutation(elements, row, index);
@@ -104,7 +105,7 @@ public class SimpleIterator {
         double sum = 0;
         for (int i = 0; i < size; i++) {
             if (i != index) {
-                sum += elements[row][i];
+                sum += Math.abs(elements[row][i]);
             }
         }
         return sum;

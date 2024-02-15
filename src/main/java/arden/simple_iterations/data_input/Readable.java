@@ -1,4 +1,4 @@
-package arden.simple_iterations.matrix_reader;
+package arden.simple_iterations.data_input;
 
 import arden.simple_iterations.model.Matrix;
 

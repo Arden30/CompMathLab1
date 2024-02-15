@@ -41,17 +41,17 @@ public class PrettyPrinter {
     public static void printVariables(double[] approximation) {
         System.out.print("\n" + "Вектор неизвестных: ");
         for (int i = 0; i < approximation.length - 1; i++) {
-            System.out.print(approximation[i] + ", ");
+            System.out.print(String.format("%.4f", approximation[i]) + ", ");
         }
-        System.out.println(approximation[approximation.length - 1]);
+        System.out.printf("%.4f%n", approximation[approximation.length - 1]);
     }
 
     public static void printApproximation(double[] approximation, double[] newApproximation) {
         System.out.print("Вектор погрешностей: ");
         for (int i = 0; i < approximation.length - 1; i++) {
-            System.out.print(Math.abs(approximation[i] - newApproximation[i]) + ", ");
+            System.out.print(String.format("%.4f", Math.abs(approximation[i] - newApproximation[i])) + ", ");
         }
-        System.out.print(Math.abs(approximation[approximation.length - 1] - newApproximation[approximation.length - 1]));
+        System.out.printf("%.4f", Math.abs(approximation[approximation.length - 1] - newApproximation[approximation.length - 1]));
     }
 
     public static void printResult(int cnt, double[] approximation, double[] newApproximation) {
